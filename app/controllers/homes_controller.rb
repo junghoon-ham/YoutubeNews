@@ -4,8 +4,10 @@ class HomesController < ApplicationController
   
   ## Youtube API 통신 및 데이터를 가져와서 내 DB에 저장
   def youtube_api_connect
-    query = { "part" => "snippet", "channelId" => "UCwx6n_4OcLgzAGdty0RWCoA", "key" => "AIzaSyCsbdLEGJ9wjNkH5ctSkUUFHF1nKZQLp5c", "maxResults" => "30"}
-    @youtubeConnect = HTTParty.get("https://www.googleapis.com/youtube/v3/search", :query => query)
+    query = { "part" => "snippet", "channelId" => "UCwx6n_4OcLgzAGdty0RWCoA", "key" => ENV['YOUTUBE_API_KEY'], "maxResults" => "30"}
+
+    @youtubeConnect = HTTParty.get("https://www.googleapis.com/youtube/v3/search
+", :query => query)
     @youtubeDataJson = @youtubeConnect.to_json
     @jsonParse = JSON.parse(@youtubeDataJson)
     
