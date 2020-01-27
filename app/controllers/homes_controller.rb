@@ -6,8 +6,7 @@ class HomesController < ApplicationController
   def youtube_api_connect
     query = { "part" => "snippet", "channelId" => "UCwx6n_4OcLgzAGdty0RWCoA", "key" => ENV['YOUTUBE_API_KEY'], "maxResults" => "30"}
 
-    @youtubeConnect = HTTParty.get("https://www.googleapis.com/youtube/v3/search
-", :query => query)
+    @youtubeConnect = HTTParty.get("https://www.googleapis.com/youtube/v3/search", :query => query)
     @youtubeDataJson = @youtubeConnect.to_json
     @jsonParse = JSON.parse(@youtubeDataJson)
     
