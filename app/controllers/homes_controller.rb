@@ -57,7 +57,7 @@ class HomesController < ApplicationController
   end
   
   def youtube_tvChoseon
-    @youtube = Youtube.where(channelTitle: "UCuw1hxBo5mDVUhgMzRDk3aw").order(publishedAt: :desc).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCWlV3Lz_55UaX4JsMj-z__Q").order(publishedAt: :desc).to_json(:except => [:id])
 
     render :json => @youtube
   end
