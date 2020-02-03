@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get 'homes/youtube_mbc' => 'homes#youtube_mbc'
   get 'homes/youtube_tvChoseon' => 'homes#youtube_tvChoseon'
   get 'homes/youtube_sebese' => 'homes#youtube_sebese'
+  get 'homes/youtube_live' => 'homes#youtube_live'
   
 end

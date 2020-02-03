@@ -73,4 +73,10 @@ class HomesController < ApplicationController
 
     render :json => @youtube
   end
+  
+  def youtube_live
+    @youtube = Youtube.where(live: "live").order(publishedAt: :desc).to_json(:except => [:id])
+
+    render :json => @youtube
+  end
 end
