@@ -10,13 +10,13 @@ class HomesController < ApplicationController
   ## 내 DB에 저장된 데이터를 Json으로 출력
   def youtube_result
     @youtube = Youtube.all.order(publishedAt: :desc).to_json(:except => [:id, :created_at, :updated_at])
-
+    
     render :json => @youtube
   end
   
   def youtube_ytn
     @youtube = Youtube.where(channelTitle: "UChlgI3UHCOnwUGzWzbJ3H5w").order(publishedAt: :desc).to_json(:except => [:id])
-
+    
     render :json => @youtube
   end
   
