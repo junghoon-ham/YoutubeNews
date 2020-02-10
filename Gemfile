@@ -68,3 +68,5 @@ gem 'figaro'
 gem 'httparty'
 
 gem 'rails_db'
+
+gem 'nokogiri'
