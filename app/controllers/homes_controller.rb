@@ -11,17 +11,17 @@ class HomesController < ApplicationController
   def youtube_result
     @youtube = Youtube.where(live: "none").order(publishedAt: :desc).to_json(:except => [:id, :created_at, :updated_at])
     
-    #require 'open-uri'
-    #doc = Nokogiri::HTML(open("https://www.youtube.com/channel/UCYRrUD5v5j_Ei8sKOo7mhoQ/videos"), nil, 'UTF-8')
-    #@today = Time.now.in_time_zone("Asia/Seoul")
+    require 'open-uri'
+    doc = Nokogiri::HTML(open("https://www.youtube.com/channel/UCQabORQKQRHP-iUqe-xIFvg/videos"), nil, 'UTF-8')
+    @today = Time.now.in_time_zone("Asia/Seoul")
     
-    #puts '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    #obj = doc.css(".yt-lockup")
-    #obj.each do |t|
-    #  publishedAt = t.css("div.yt-lockup-meta ul.yt-lockup-meta-info li:nth-of-type(2)").text
-    #  puts '---------------------------------------------'
-    #  puts publishedAt
-    #end
+    puts '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+    obj = doc.css(".yt-lockup")
+    obj.each do |t|
+      publishedAt = t.css("div.yt-lockup-meta ul.yt-lockup-meta-info li:nth-of-type(2)").text
+      puts '---------------------------------------------'
+      puts publishedAt
+    end
     
     render :json => @youtube
   end
