@@ -1,4 +1,6 @@
 class HomesController < ApplicationController
+  require 'open-uri'
+  
   def index
   end
   
@@ -9,18 +11,16 @@ class HomesController < ApplicationController
   
   ## 내 DB에 저장된 데이터를 Json으로 출력
   def youtube_result
-    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).to_json(:except => [:id, :created_at, :updated_at])
+    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).to_json(:except => [:id])
     
-    #require 'open-uri'
-    #doc = Nokogiri::HTML(open("https://www.youtube.com/channel/UCQabORQKQRHP-iUqe-xIFvg/videos"), nil, 'UTF-8')
+    #doc = Nokogiri::HTML(open("https://www.youtube.com/user/NewsKBS/videos?gl=KR&hl=ko"), nil, 'UTF-8')
     #@today = Time.now.in_time_zone("Asia/Seoul")
     
-    #puts '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
-    #obj = doc.css(".yt-lockup")
+    #@teestArr = []
+    #obj = doc.css("div.yt-lockup-meta ul.yt-lockup-meta-info")
     #obj.each do |t|
-    #  publishedAt = t.css("div.yt-lockup-meta ul.yt-lockup-meta-info li:nth-of-type(2)").text
-    #  puts '---------------------------------------------'
-    #  puts publishedAt
+    #  publishedAt = t.css("li:nth-of-type(2)").text
+    #  @teestArr << publishedAt
     #end
     
     render :json => @youtube
