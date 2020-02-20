@@ -11,7 +11,7 @@ class HomesController < ApplicationController
   
   ## 내 DB에 저장된 데이터를 Json으로 출력
   def youtube_result
-    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).to_json(:except => [:id])
+    @youtube = Youtube.where('created_at < ? AND live = ?', 24.hour.ago, 'live').order(publishedAt: :desc).to_json(:except => [:id])
     
     #doc = Nokogiri::HTML(open("https://www.youtube.com/user/NewsKBS/videos?gl=KR&hl=ko"), nil, 'UTF-8')
     #@today = Time.now.in_time_zone("Asia/Seoul")
