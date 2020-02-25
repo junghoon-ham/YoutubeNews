@@ -28,7 +28,7 @@ class HomesController < ApplicationController
   end
   
   def youtube_ytn
-    @youtube = Youtube.where(channelTitle: "UChlgI3UHCOnwUGzWzbJ3H5w", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UChlgI3UHCOnwUGzWzbJ3H5w", live: 'none').order(publishedAt: :desc).limit(200).to_json(:except => [:id])
     
     render :json => @youtube
   end
