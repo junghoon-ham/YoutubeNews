@@ -100,6 +100,6 @@ class HomesController < ApplicationController
   end
   
   def youtube_search
-    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).to_json(:except => [:id])
+    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).limit(400).to_json(:except => [:id])
   end
 end
