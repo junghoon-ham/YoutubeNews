@@ -12,7 +12,7 @@ class HomesController < ApplicationController
   ## 내 DB에 저장된 데이터를 Json으로 출력
   def youtube_result
     #@youtube = Youtube.where('created_at > ? AND live = ?', 12.hour.ago, 'none').order(publishedAt: :desc).to_json(:except => [:id])
-    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).limit(200).to_json(:except => [:id])
     
     #doc = Nokogiri::HTML(open("https://www.youtube.com/user/NewsKBS/videos?gl=KR&hl=ko"), nil, 'UTF-8')
     #@today = Time.now.in_time_zone("Asia/Seoul")
@@ -28,7 +28,7 @@ class HomesController < ApplicationController
   end
   
   def youtube_ytn
-    @youtube = Youtube.where(channelTitle: "UChlgI3UHCOnwUGzWzbJ3H5w", live: 'none').order(publishedAt: :desc).limit(200).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UChlgI3UHCOnwUGzWzbJ3H5w", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
     
     render :json => @youtube
   end
@@ -97,5 +97,9 @@ class HomesController < ApplicationController
     @youtube = Youtube.where(live: "live").order(publishedAt: :desc).to_json(:except => [:id])
 
     render :json => @youtube
+  end
+  
+  def youtube_search
+    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).to_json(:except => [:id])
   end
 end
