@@ -28,67 +28,67 @@ class HomesController < ApplicationController
   end
   
   def youtube_ytn
-    @youtube = Youtube.where(channelTitle: "UChlgI3UHCOnwUGzWzbJ3H5w", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UChlgI3UHCOnwUGzWzbJ3H5w", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
     
     render :json => @youtube
   end
   
   def youtube_jtbc
-    @youtube = Youtube.where(channelTitle: "UCsU-I-vHLiaMfV_ceaYz5rQ", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCsU-I-vHLiaMfV_ceaYz5rQ", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
   
   def youtube_channelA
-    @youtube = Youtube.where(channelTitle: "UCfq4V1DAuaojnr2ryvWNysw", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCfq4V1DAuaojnr2ryvWNysw", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
   
   def youtube_mbn
-    @youtube = Youtube.where(channelTitle: "UCG9aFJTZ-lMCHAiO1KJsirg", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCG9aFJTZ-lMCHAiO1KJsirg", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
   
   def youtube_sbs
-    @youtube = Youtube.where(channelTitle: "UCkinYTS9IHqOEwR1Sze2JTw", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCkinYTS9IHqOEwR1Sze2JTw", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
   
   def youtube_kbs
-    @youtube = Youtube.where(channelTitle: "UCcQTRi69dsVYHN3exePtZ1A", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCcQTRi69dsVYHN3exePtZ1A", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
   
   def youtube_mbc
-    @youtube = Youtube.where(channelTitle: "UCF4Wxdo3inmxP-Y59wXDsFw", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCF4Wxdo3inmxP-Y59wXDsFw", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
   
   def youtube_tvChoseon
-    @youtube = Youtube.where(channelTitle: "UCWlV3Lz_55UaX4JsMj-z__Q", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCWlV3Lz_55UaX4JsMj-z__Q", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
   
   def youtube_video
-    @youtube = Youtube.where(channelTitle: "UCMEbRpvuwTbXxGiyDb1mT8w", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCMEbRpvuwTbXxGiyDb1mT8w", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
   
   def youtube_sebese
-    @youtube = Youtube.where(channelTitle: "UCQabORQKQRHP-iUqe-xIFvg", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCQabORQKQRHP-iUqe-xIFvg", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
   
   def youtube_mbig
-    @youtube = Youtube.where(channelTitle: "UCYRrUD5v5j_Ei8sKOo7mhoQ", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @youtube = Youtube.where(channelTitle: "UCYRrUD5v5j_Ei8sKOo7mhoQ", live: 'none').order(publishedAt: :desc).limit(300).to_json(:except => [:id])
 
     render :json => @youtube
   end
@@ -100,7 +100,7 @@ class HomesController < ApplicationController
   end
   
   def youtube_search
-    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).to_json(:except => [:id])
+    @youtube = Youtube.where(live: "none").order(publishedAt: :desc).limit(600).to_json(:except => [:id])
     #
     render :json => @youtube
   end
