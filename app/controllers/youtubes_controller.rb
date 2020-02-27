@@ -401,7 +401,8 @@ class YoutubesController < ApplicationController
   end
   
   def search
-    # @youtube = Youtube.where("title LIKE ? %코로나%").order(publishedAt: :desc).limit(500).to_json(:except => [:id])
-    # render :json => @youtube
+    @keyword = params[:keyword]
+    @youtube = Youtube.where("title LIKE ?", "%#{@keyword}%").order(publishedAt: :desc).limit(100).to_json(:except => [:id])
+    render :json => @youtube
   end
 end

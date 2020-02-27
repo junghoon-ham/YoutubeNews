@@ -10,4 +10,14 @@ class Youtube < ApplicationRecord
         result = Youtube.where(channelTitle: channel_title).where("created_at <= :currnetTime AND live = :live", :currnetTime => current_time, :live => 'none').order(publishedAt: :desc).uniq.drop(startNumber).first(size)
         return result
     end
+    
+    def self.channel_list_all_without_drop(current_time, size)
+        result = Youtube.where("created_at <= :currnetTime AND live = :live", :currnetTime => current_time, :live => 'none').order(publishedAt: :desc).uniq.first(size)
+        return result
+    end
+    
+    def self.channel_list_all(current_time, startNumber, size)
+        result = Youtube.where("created_at <= :currnetTime AND live = :live", :currnetTime => current_time, :live => 'none').order(publishedAt: :desc).uniq.drop(startNumber).first(size)
+        return result
+    end
 end

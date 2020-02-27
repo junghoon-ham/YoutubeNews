@@ -2,10 +2,31 @@ class HomesController < ApplicationController
   require 'open-uri'
   
   def index
-  end
-  
-  ## Youtube API 통신 및 데이터를 가져와서 내 DB에 저장
-  def youtube_api_connect
+    @pageNumber = params[:page].to_i
+    @size = params[:size].to_i
+    @currentTime = params[:time]
     
+    if @pageNumber == 0
+      @pageNumber = 1
+    end
+    
+    if @size == 0
+      @size = 20
+    end
+    
+    if @currentTime.nil?
+      @currentTime = Time.zone.now.strftime('%Y-%m-%d %H:%M:%S')
+    else
+      @currentTime = @currentTime.to_time.strftime('%Y-%m-%d %H:%M:%S')
+    end
+    
+    if @pageNumber == 1
+      @youtube = Youtube.channel_list_all_without_drop(@channelTitle, @currentTime, @size)
+    else
+      @startNumber = @pageNumber * 10 + @pageNumber * (@size-10) - @size
+      @youtube = Youtube.channel_list_all(@channelTitle, @currentTime, @startNumber, @size)
+    end
+
+    render :json => @youtube
   end
 end
