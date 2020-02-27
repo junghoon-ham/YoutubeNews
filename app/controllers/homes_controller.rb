@@ -21,10 +21,10 @@ class HomesController < ApplicationController
     end
     
     if @pageNumber == 1
-      @youtube = Youtube.channel_list_all_without_drop(@channelTitle, @currentTime, @size)
+      @youtube = Youtube.channel_list_all_without_drop(@currentTime, @size)
     else
       @startNumber = @pageNumber * 10 + @pageNumber * (@size-10) - @size
-      @youtube = Youtube.channel_list_all(@channelTitle, @currentTime, @startNumber, @size)
+      @youtube = Youtube.channel_list_all(@currentTime, @startNumber, @size)
     end
 
     render :json => @youtube
