@@ -1,5 +1,5 @@
 Rails.application.routes.draw do  
-  root 'homes#result'
+  root 'youtubes#kbs'
   
   # get 'youtubes/index'
   get 'homes/youtube-api-connect' => 'homes#api_connect'
