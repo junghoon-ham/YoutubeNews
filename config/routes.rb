@@ -1,7 +1,7 @@
 Rails.application.routes.draw do  
-  root 'youtubes#index'
+  root 'homes#index'
   
-  get 'youtubes/index'
+  get 'homes/index'
   
   get 'youtubes/ytn' => 'youtubes#ytn'
   get 'youtubes/jtbc' => 'youtubes#jtbc'
