@@ -10,7 +10,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -55,7 +55,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -87,7 +87,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -119,7 +119,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -151,7 +151,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -183,7 +183,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -215,7 +215,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -247,7 +247,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -279,7 +279,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -311,7 +311,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -343,7 +343,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -375,7 +375,7 @@ class YoutubesController < ApplicationController
     end
     
     if @size == 0
-      @size = 20
+      @size = 5
     end
     
     if @currentTime.nil?
@@ -402,7 +402,7 @@ class YoutubesController < ApplicationController
   
   def search
     @keyword = params[:keyword]
-    @youtube = Youtube.where("title LIKE ?", "%#{@keyword}%").order(publishedAt: :desc).limit(100).to_json(:except => [:id])
+    @youtube = Youtube.where("title LIKE ?", "%#{@keyword}%").order(publishedAt: :desc).to_json(:except => [:id])
     render :json => @youtube
   end
 end
