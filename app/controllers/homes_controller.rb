@@ -11,7 +11,7 @@ class HomesController < ApplicationController
     end
     
     if @size == 0
-      @size = 6
+      @size = 20
     end
     
     if @currentTime.nil?
