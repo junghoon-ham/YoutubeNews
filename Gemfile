@@ -70,3 +70,6 @@ gem 'httparty'
 gem 'rails_db'
 
 gem 'nokogiri'
+
+gem 'chromedriver-helper'
+gem 'selenium-webdriver'

@@ -138,6 +138,38 @@ class YoutubesController < ApplicationController
     render :json => @youtube
   end
   
+  def yeonhab
+    #@youtube = Youtube.where(channelTitle: "UCfq4V1DAuaojnr2ryvWNysw", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
+    @channelTitle = "UCTHCOPwqNfZ0uiKOvFyhGwg"
+    
+    @pageNumber = params[:page].to_i
+    @size = params[:size].to_i
+    @currentTime = params[:time]
+    
+    if @pageNumber == 0
+      @pageNumber = 1
+    end
+    
+    if @size == 0
+      @size = 20
+    end
+    
+    if @currentTime.nil?
+      @currentTime = Time.zone.now.strftime('%Y-%m-%d %H:%M:%S')
+    else
+      @currentTime = @currentTime.to_time.strftime('%Y-%m-%d %H:%M:%S')
+    end
+    
+    if @pageNumber == 1
+      @youtube = Youtube.channel_list_without_drop(@channelTitle, @currentTime, @size)
+    else
+      @startNumber = @pageNumber * 10 + @pageNumber * (@size-10) - @size
+      @youtube = Youtube.channel_list(@channelTitle, @currentTime, @startNumber, @size)
+    end
+
+    render :json => @youtube
+  end
+  
   def mbn
     #@youtube = Youtube.where(channelTitle: "UCG9aFJTZ-lMCHAiO1KJsirg", live: 'none').order(publishedAt: :desc).limit(400).to_json(:except => [:id])
     @channelTitle = "UCG9aFJTZ-lMCHAiO1KJsirg"
@@ -402,7 +434,7 @@ class YoutubesController < ApplicationController
   
   def search
     @keyword = params[:keyword]
-    @youtube = Youtube.where("title LIKE ?", "%#{@keyword}%").order(publishedAt: :desc).to_json(:except => [:id])
+    @youtube = Youtube.where("title LIKE ?", "%#{@keyword}%").order(publishedAt: :desc).limit(500).to_json(:except => [:id])
     render :json => @youtube
   end
 end

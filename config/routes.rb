@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'youtubes/ytn' => 'youtubes#ytn'
   get 'youtubes/jtbc' => 'youtubes#jtbc'
   get 'youtubes/channelA' => 'youtubes#channelA'
+  get 'youtubes/yeonhab' => 'youtubes#yeonhab'
   get 'youtubes/mbn' => 'youtubes#mbn'
   get 'youtubes/video' => 'youtubes#video'
   get 'youtubes/sbs' => 'youtubes#sbs'
